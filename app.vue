@@ -6,24 +6,24 @@
       <div class="option-container">
         <h4>1 Choose a gender</h4>
         <div class="option-button">
-          <button>Boy</button>
-          <button>Unisex</button>
-          <button>Girl</button>
+          <button class="option option-left">Boy</button>
+          <button class="option">Unisex</button>
+          <button class="option option-right">Girl</button>
         </div>
       </div>
       <div class="option-container">
         <h4>2 Choose a name's popularity</h4>
         <div class="option-button">
-          <button>Trendy</button>
-          <button>Unique</button>
+          <button class="option option-left">Trendy</button>
+          <button class="option option-right">Unique</button>
         </div>
       </div>
       <div class="option-container">
         <h4>3 Choose a name's length</h4>
         <div class="option-button">
-          <button>Long</button>
-          <button>All</button>
-          <button>Short</button>
+          <button class="option option-left">Long</button>
+          <button class="option">All</button>
+          <button class="option option-right">Short</button>
         </div>
       </div>
     </div>
@@ -31,5 +31,50 @@
 </template>
 
 <style scoped>
+.container {
+  max-width: 50rem;
+  margin: 0 auto;
+  text-align: center;
+  color: rgb(27, 60, 138);
+  font-family: Arial, Helvetica, sans-serif;
+}
 
+h1 {
+  font-size: 3rem;
+}
+
+.options-container {
+  position: relative;
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 4rem;
+  padding: 1rem;
+  padding-bottom: 3rem;
+  background-color: rgb(255, 238, 236);
+  border-radius: 2rem;
+}
+
+.options-container {
+  margin-bottom: 2rem;
+}
+
+.option {
+  width: 12rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 200;
+  color: rgb(27, 60, 138);
+  background: white;
+  border: none;
+  outline: 0.15rem solid rgb(249, 87, 89);
+  cursor: pointer;
+}
+
+.option-left {
+  border-radius: 1rem 0 0 1rem;
+}
+
+.option-right {
+  border-radius: 0 1rem 1rem 0;
+}
 </style>
