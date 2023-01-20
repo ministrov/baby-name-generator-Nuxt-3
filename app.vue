@@ -7,6 +7,7 @@
         v-for="option in optionsArray"
         :key="option.title"
         :option="option"
+        :options="options"
       />
 
       <button class="primary"
@@ -24,21 +25,19 @@
 </template>
 
 <script setup lang="ts">
-import { Gender, Popularity, Length, names } from '@/data';
+import { Gender, Popularity, Length, names } from "@/data";
 
 interface OptionsState {
-  gender: Gender,
-  popularity: Popularity,
-  length: Length
-}
+  gender: Gender;
+  popularity: Popularity;
+  length: Length;
+};
 
 const options = reactive<OptionsState>({
   gender: Gender.GIRL,
+  length: Length.SHORT,
   popularity: Popularity.TRENDY,
-  length: Length.ALL
 });
-
-console.log(options);
 
 const computeSelectedNames = () => {
   const filteredNames = names
@@ -50,7 +49,7 @@ const computeSelectedNames = () => {
     })
 
     selectedNames.value = filteredNames.map((name) => name.name);
-}
+};
 
 const selectedNames = ref<string[]>([]);
 
@@ -58,7 +57,7 @@ const optionsArray = [
   {
     title: '1) Choose a gender',
     category: 'gender',
-    buttons: [Gender.BOY, Gender.UNISEX, Gender.BOY]
+    buttons: [Gender.BOY, Gender.UNISEX, Gender.GIRL]
   },
   {
     title: '2) Choose a name\'s popularity',
@@ -70,7 +69,7 @@ const optionsArray = [
     category: 'length',
     buttons: [Length.SHORT, Length.ALL, Length.LONG]
   }
-]
+];
 
 </script>
 

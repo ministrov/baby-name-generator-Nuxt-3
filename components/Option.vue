@@ -5,8 +5,8 @@
       <button class="option option-left"
         v-for="value in option.buttons"
         :key="value"
-        :class="option.category === value && 'option-active'"
-        @click="option.category = value"
+        :class="options[option.category] === value && 'option-active'"
+        @click="options[option.category] = value"
       >
       {{ value }}
       </button>
@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { Gender, Length, Popularity } from "@/data";
+import { Gender, Length, Popularity } from '../data';
 
 interface OptionProps {
   option: {
@@ -31,6 +31,11 @@ interface OptionProps {
 }
 
 const props = defineProps<OptionProps>();
+
+const computeButtonClasses = (value, index) => {
+
+}
+
 </script>
 
 <style>
