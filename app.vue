@@ -1,4 +1,6 @@
 <template>
+  <Header/>
+  
   <div class="container">
     <h1>Baby Name Generator</h1>
     <p>Choose your options and click the "Find  Names" button below</p>
@@ -16,10 +18,13 @@
       </button>
     </div>
     <div class="cards-container">
-      <div v-for="name in selectedNames" key="name" class="card">
-        <h4>{{ name }}</h4>
-        <p>x</p>
-      </div>
+      <CardName
+        v-for="(name, index) in selectedNames"
+        :key="name"
+        :name="name"
+        @remove="() => removeName(index)"
+        :index="index"
+      />
     </div>
   </div>
 </template>
@@ -52,6 +57,12 @@ const computeSelectedNames = () => {
 };
 
 const selectedNames = ref<string[]>([]);
+
+const removeName = (index: number) => {
+  const filteredNames = [...selectedNames.value];
+  filteredNames.splice(index, 1);
+  selectedNames.value = filteredNames
+}
 
 const optionsArray = [
   {
@@ -141,25 +152,5 @@ h1 {
   display: flex;
   flex-wrap: wrap;
 }
-
-.card {
-  position: relative;
-  width: 28%;
-  margin-right: 0.4rem;
-  margin-bottom: 1rem;
-  padding: 0.1rem;
-  color: white;
-  background-color: rgb(27, 60, 138);
-  border-radius: 1rem;
-}
-
-.card p {
-  position: absolute;
-  top: -17%;
-  left: 91.5%;
-  color: rgba(255, 255, 255, 0.178);
-  cursor: pointer;
-}
-
 /* 200 lines of code */
 </style>
